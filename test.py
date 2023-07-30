@@ -3,7 +3,7 @@ import fitz
 from google.cloud import storage
 from google.oauth2 import service_account
 import os
-from supabase import create_client
+# from supabase import create_client
 import pandas as pd
 from fnmatch import fnmatch
 import unicodedata
