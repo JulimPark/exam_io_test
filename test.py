@@ -11,7 +11,17 @@ from io import BytesIO
 import json
 
 bucket_name = 'free_online_math'
-st.session_state.signin = 'BB'
+st.session_state.signin = 'AA'
+
+hide_streamlit_style = """
+            <style>
+            [data-testid="stToolbar"] {visibility: hidden !important;}
+            footer {visibility: hidden !important;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
 
 ## 온라인 게시용
 @st.cache_resource
@@ -23,7 +33,10 @@ def google_storage():
     return storage_client
 storage_client = google_storage()
 
-
+title1 = f"<h4 style='text-align: center; color: #E7CEA6;background:#0A6EBD'>수능/전국연합/사관/경찰</h4>"
+st.markdown(title1,unsafe_allow_html=True)  
+title2 = f"<h1 style='text-align: center; color: #0A6EBD;background:#E7CEA6'>기출문항 무료제공 서비스</h1>"
+st.markdown(title2,unsafe_allow_html=True)
 
 
 
@@ -223,5 +236,10 @@ if make_exam:
         merge_data(data)
     else:
         st.error('해당 선택에 대한 문항이 없습니다. 옵션을 조절하세요.')
+
+
+
+bottom_contents1 = f"<h5 style='text-align: center; color: #000000;background:#E7CEA6''>© 2023. 더필요와충분 All rights reserved.</h5>"
+st.write(bottom_contents1, unsafe_allow_html=True)
     
 
