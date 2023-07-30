@@ -2,7 +2,7 @@ import streamlit as st
 import fitz
 from google.cloud import storage
 import os
-from supabase import create_client
+# from supabase import create_client
 import pandas as pd
 from fnmatch import fnmatch
 import unicodedata
