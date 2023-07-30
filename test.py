@@ -22,7 +22,7 @@ bucket_name = 'free_online_math'
 def google_storage():
     key_dict = json.loads(st.secrets["textkey"])
     creds = service_account.Credentials.from_service_account_info(key_dict)
-    storage_client = storage.Client(credentials=creds,project=bucket_name)
+    storage_client = storage.Client(credentials=creds)
     return storage_client
 storage_client = google_storage()
 
