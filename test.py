@@ -7,13 +7,20 @@ import pandas as pd
 from fnmatch import fnmatch
 import unicodedata
 from io import BytesIO
+import json
+
+# creds = service_account.Credentials.from_service_account_info(key_dict)
+# db = firestore.Client(credentials=creds, project="test-project-6e03a")
+
+
 
 bucket_name = 'free_online_math'
 
 
 @st.cache_resource
 def google_storage():
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="fire.json"
+    key_dict = json.loads(st.secrets["textkey"])
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=key_dict
     storage_client = storage.Client()
     return storage_client
 storage_client = google_storage()
