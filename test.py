@@ -8,8 +8,9 @@ from fnmatch import fnmatch
 import unicodedata
 from io import BytesIO
 import json
+from google.oauth2 import service_account
 
-# creds = service_account.Credentials.from_service_account_info(key_dict)
+
 # db = firestore.Client(credentials=creds, project="test-project-6e03a")
 
 
@@ -20,8 +21,8 @@ bucket_name = 'free_online_math'
 @st.cache_resource
 def google_storage():
     key_dict = json.loads(st.secrets["textkey"])
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=key_dict
-    storage_client = storage.Client()
+    creds = service_account.Credentials.from_service_account_info(key_dict)
+    storage_client = storage.Client(credentials=creds,project=bucket_name)
     return storage_client
 storage_client = google_storage()
 
